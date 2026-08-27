@@ -1,0 +1,18 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build output
+**/bin/
+**/obj/
+
+# Test results
+TestResults/
+*.trx
+
+# Docker secrets / local environment
+.env
+
+# User-specific local settings
+appsettings.Local.json

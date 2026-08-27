@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".env" />
+    <File Path=".gitignore" />
+    <File Path="docker-compose.yml" />
+  </Folder>
+  <Project Path="CRN.API/CRN.API.csproj" />
+  <Project Path="CRN.Application/CRN.Application.csproj" />
+  <Project Path="CRN.Domain/CRN.Domain.csproj" />
+  <Project Path="CRN.Infrastructure/CRN.Infrastructure.csproj" />
+  <Project Path="CRN.IntegrationTests/CRN.IntegrationTests.csproj" />
+  <Project Path="CRN.UnitTests/CRN.UnitTests.csproj" />
+</Solution>
