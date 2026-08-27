@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace CRN.API.Controllers;
 
+/// <summary>
+/// Provides RESTful endpoints for managing products.
+/// </summary>
 [ApiController]
 [Route("api/v1/[controller]")]
 [Authorize]
@@ -25,6 +28,12 @@ public class ProductsController : ControllerBase
         _updateValidator = updateValidator;
     }
 
+    /// <summary>
+    /// Retrieves a paginated list of products.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of products to return per page.</param>
+    /// <returns>A paginated list of products.</returns>
     [HttpGet]
     public async Task<ActionResult<PagedResult<ProductResponse>>> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
@@ -51,6 +60,11 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    /// <summary>
+    /// Retrieves a product by its identifier.
+    /// </summary>
+    /// <param name="id">The unique identifier of the product.</param>
+    /// <returns>The requested product.</returns>
     [HttpGet("{id:int}")]
     public async Task<ActionResult<ProductResponse>> GetById(int id)
     {
@@ -64,6 +78,11 @@ public class ProductsController : ControllerBase
         return Ok(product);
     }
 
+    /// <summary>
+    /// Creates a new product.
+    /// </summary>
+    /// <param name="request">The product creation request.</param>
+    /// <returns>The newly created product.</returns>
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<ProductResponse>> Create(
@@ -95,6 +114,12 @@ public class ProductsController : ControllerBase
             product);
     }
 
+    /// <summary>
+    /// Updates an existing product.
+    /// </summary>
+    /// <param name="id">The unique identifier of the product.</param>
+    /// <param name="request">The product update request.</param>
+    /// <returns>No content when the product is successfully updated.</returns>
     [HttpPut("{id:int}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update(
@@ -129,6 +154,11 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Deletes an existing product.
+    /// </summary>
+    /// <param name="id">The unique identifier of the product.</param>
+    /// <returns>No content when the product is successfully deleted.</returns>
     [HttpDelete("{id:int}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
